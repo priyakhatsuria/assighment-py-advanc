@@ -1,0 +1,355 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset2 Wingdings;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 # B1 What is File function in python?what is keywords to create and write file.\par
+\par
+Open the File: You use the open() function to open a file. It takes two arguments: the file name and the mode in which you want to open the file\par
+(e.g., "r" for read, "w" for write, "a" for append, "b" for binary mode, etc.).\par
+\par
+Write to the File: If you want to write to the file,\par
+you can use methods like write() to add content to the file.\par
+\par
+Close the File: After you're done with the file, it's essential to close it using the close() method.\par
+This ensures that any changes are saved and that system resources are released.\par
+\par
+\par
+# B2 Write a Python program to read an entire text file\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        file_content = file.read()\par
+        print(file_content)\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+# B3 Write a Python program to append text to a file and display the text. \par
+\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "a") as file:\par
+        text_to_append = input("Enter text to append to the file: ")\par
+        file.write(text_to_append + "\\n")\par
+    with open(file_name, "r") as file:\par
+        file_content = file.read()\par
+        print("Updated File Content:")\par
+        print(file_content)\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to write to '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+# B4 Write a Python program to read first n lines of a file\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        n = int(input("Enter the number of lines to read: "))\par
+        line_count = 0\par
+        for line in file:\par
+            print(line, end="")\par
+            line_count += 1\par
+            if line_count >= n:\par
+                break\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+#5 Write a Python program to read last n lines of a file\par
+\par
+from collections import deque\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        n = int(input("Enter the number of lines to read: "))\par
+        last_lines = deque(maxlen=n)\par
+        for line in file:\par
+            last_lines.append(line)\par
+        print("Last", min(n, len(last_lines)), "lines of the file:")\par
+        for line in last_lines:\par
+            print(line, end="")\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+\par
+#6  I1 Write a Python program to read a file line by line and store it into a list\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        lines_list = []\par
+        for line in file:\par
+            lines_list.append(line.strip())\par
+        print("Contents of the file stored in a list:")\par
+        for line in lines_list:\par
+            print(line)\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+\par
+# 7 Write a Python program to read a file line by line store it into a variable. \par
+\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        file_content = ""\par
+        for line in file:\par
+            file_content += line\par
+        print("File content stored in a variable:")\par
+        print(file_content)\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+# 8Write a python program to find the longest words\par
+\par
+text = "This is a sample sentence to find the longest words in the text."\par
+words = text.split()\par
+\par
+longest_words = []\par
+max_length = 0\par
+\par
+for word in words:\par
+    word = word.strip(".,!?")\par
+    word_length = len(word)\par
+    \par
+    if word_length > max_length:\par
+        max_length = word_length\par
+        longest_words = [word]\par
+    elif word_length == max_length:\par
+        longest_words.append(word)\par
+\par
+print("Longest words in the text:")\par
+for word in longest_words:\par
+    print(word)\par
+\par
+\par
+# 9 Write a Python program to count the number of lines in a text file. \par
+\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        line_count = 0\par
+        for line in file:\par
+            line_count += 1\par
+        print(f"Total number of lines in '\{file_name\}': \{line_count\}")\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+# I0 Write a Python program to count the frequency of words in a file\par
+\par
+\par
+file_name = "example.txt"\par
+try:\par
+    with open(file_name, "r") as file:\par
+        word_count = \{\}\par
+        for line in file:\par
+            words = line.split()\par
+            for word in words:\par
+                word = word.strip(".,!?").lower()\par
+                if word:\par
+                    word_count[word] = word_count.get(word, 0) + 1\par
+        print("Word frequencies in the file:")\par
+        for word, count in word_count.items():\par
+            print(f"\{word\}: \{count\}")\par
+\par
+except FileNotFoundError:\par
+    print(f"The file '\{file_name\}' does not exist.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to read '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+# 11 Write a Python program to write a list to a file.\par
+\par
+my_list = ["apple", "banana", "cherry", "date"]\par
+file_name = "my_list.txt"\par
+try:\par
+    with open(file_name, "w") as file:\par
+        for item in my_list:\par
+            file.write(item + "\\n")\par
+    print(f"The list has been written to '\{file_name\}'.")\par
+\par
+except PermissionError:\par
+    print(f"You don't have permission to write to '\{file_name\}'.")\par
+\par
+except Exception as e:\par
+    print(f"An error occurred: \{e\}")\par
+\par
+\par
+\par
+\par
+# 12 Write a Python program to copy the contents of a file to another file.\par
+import shutil\par
+\par
+source_file = "source.txt"\par
+destination_file = "destination.txt"\par
+\par
+try:\par
+    shutil.copy(source_file, destination_fil\par
+    print("The contents of the source file have been copied to the destination file.")\par
+except IOError as e:\par
+    print("Unable to copy the file. Error: ", e)\par
+except Exception as e:\par
+    print("Unexpected error: ", e)\par
+\par
+\par
+\par
+# 13 Explain Exception handling? What is an Error in Python?\par
+try:\par
+    # Code that may raise an exception\par
+    x = 1 / 0\par
+except ZeroDivisionError:\par
+    print("You can't divide by zero.")\par
+An error in Python is an unhandled exception that is raised during the execution of a program. When an error occurs, Python prints a traceback and terminates the program.\par
+# 14 How many except statements can a try-except block have? Name Some built-in exception classes: \par
+A try-except block can have any number of except statements. Each except statement is responsible for handling a specific type of exception.\par
+try:\par
+    # Code that doesn't raise an exception\par
+    x = 1 + 1\par
+except ZeroDivisionError:\par
+    print("An error occurred.")\par
+else:\par
+    print("No errors occurred.")\f1\par
+\f0\par
+\par
+\par
+\par
+\par
+# 15 When will the else part of try-except-else be executed?\par
+\par
+you can use a try-except-else block to specify code that should be executed when no exceptions are raised within the try block.\par
+ The else block will run if and only if the code in the try block executes successfully without any exceptions.\par
+\par
+\par
+\par
+# 16  Can one block of except statements handle multiple exception? \par
+\par
+one except block can handle multiple exceptions by specifying those exceptions as a tuple in the except statement.\par
+This allows you to provide the same handling logic for multiple exception types in a single except block, reducing code duplication.\par
+    \par
+\par
+      \par
+\par
+# 17 When is the finally block executed?\par
+\par
+After the try block: The finally block is executed after the code in the try block has executed, regardless of whether an exception was raised or not.\par
+ This means that even if an exception occurs and is caught by an except block, the finally block will still execute.\par
+\par
+\par
+# 18 What happens when \lquote 1\rquote  == 1 is executed?\par
+\par
+When you execute the expression '1' == 1 in Python, you are comparing two values: a string containing the character '1' and an integer with the numeric value 1\par
+\par
+\par
+\par
+\par
+# 19 How Do You Handle Exceptions With Try/Except/Finally In Python?Explain with coding snippets.\par
+def divide(a, b):\par
+    try:\par
+        return a / b\par
+    except ZeroDivisionError:\par
+        print("Error: Dividing by zero is not allowed.")\par
+        return None\par
+    except TypeError:\par
+        print("Error: One or both arguments is not a number.")\par
+        return None\par
+    finally:\par
+        print("The operation has been completed.")\par
+\par
+one except block can handle multiple exceptions by specifying those exceptions as a tuple in the except statement.\par
+This allows you to provide the same handling logic for multiple exception types in a single except block, reducing code duplication.\par
+    \par
+\par
+# 20 write python program that user to enter only odd numbers, else will raise an exception.\par
+\par
+try:\par
+    number = int(input("Enter an odd number: "))\par
+    if number % 2 == 0:\par
+        raise ValueError("You entered an even number.")\par
+except ValueError as e:\par
+    print(f"Error: \{e\}")\par
+else:\par
+    print(f"You entered an odd number: \{number\}")\par
+\par
+\par
+\par
+\par
+# 21 What are oops concepts? Is multiple inheritance supported in java\par
+Object-Oriented Programming (OOP) concepts are principles that define the behavior of objects and classes in a program. These concepts are widely used in object-oriented programming languages like Java, Python, and C++. Some common OOP concepts include:\par
+\par
+Encapsulation: This concept involves bundling the data (attributes) and the methods that operate on the data within a single unit, usually a class.\par
+Inheritance: This concept allows a class to inherit the attributes and methods of another class. The class that inherits the attributes and methods is called the subclass, and the class being inherited from is called the superclass.\par
+Polymorphism: This concept allows a single interface to represent different types of data. In Python, polymorphism is often expressed using the _ (underscore) function, which can be used to pass a variable number of arguments to a function.\par
+Abstraction: This concept involves hiding the details of an implementation and showing only the functionality. Abstract classes and methods are commonly used to achieve abstraction in Python.\par
+Multiple inheritance is supported in Python, allowing a class to inherit from multiple classes. However, Java does not support multiple inheritance due to the Diamond Problem. To overcome this limitation, Java allows classes to implement multiple interfaces, which provides some of the same functionality as multiple inheritance.\par
+\par
+# 22How To Define a Class in Python?What Is Self?Give An Example Of A Python Class \par
+\par
+ you can define a class using the class keyword. A class is a blueprint for creating objects, and it defines the attributes (data members) and methods\par
+(functions) that the objects of the class will have. The self keyword is a convention in Python used as the first parameter in methods within a class.\par
+  It refers to the instance of the class itself, allowing you to access and modify its attributes and methods.\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
